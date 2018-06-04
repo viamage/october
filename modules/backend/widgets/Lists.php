@@ -580,12 +580,7 @@ class Lists extends WidgetBase
             return null;
         }
 
-        $data = $record->toArray();
-        $data += [$record->getKeyName() => $record->getKey()];
-
-        $columns = array_keys($data);
-
-        $url = RouterHelper::parseValues($data, $columns, $this->recordUrl);
+        $url = RouterHelper::replaceParameters($record, $this->recordUrl);
         return Backend::url($url);
     }
 
@@ -600,8 +595,7 @@ class Lists extends WidgetBase
             return null;
         }
 
-        $columns = array_keys($record->getAttributes());
-        $recordOnClick = RouterHelper::parseValues($record, $columns, $this->recordOnClick);
+        $recordOnClick = RouterHelper::replaceParameters($record, $this->recordOnClick);
         return Html::attributes(['onclick' => $recordOnClick]);
     }
 
