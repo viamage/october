@@ -159,6 +159,7 @@ return [
         'missing_parent_definition' => "Zachowanie listy nie zawiera definicji dla ':definition'.",
         'behavior_not_ready' => 'Zachowanie listy nie zostało zainicjowane, sprawdź czy wywołałeś makeLists() w swoim kontrolerze.',
         'invalid_column_datetime' => "Wartość kolumny ':column' nie jest objektem typu DateTime, czy nie brakuje Ci referencji \$dates w Modelu?",
+        'options_method_not_exists' => "Model :model musi mieć zdefiniowaną metodę :method() zwracającą opcje dla pola listy ':field'.",
         'pagination' => 'Wyświetlono rekordy: :from-:to z :total',
         'prev_page' => 'Poprzednia strona',
         'next_page' => 'Następna strona',

@@ -1031,6 +1031,30 @@ class Lists extends WidgetBase
     /**
      * Process as boolean switch
      */
+    protected function evalArrayTypeValue($record, $column, $value)
+    {
+        $attribute = $column->columnName;
+        $methodName = 'get'.studly_case($attribute).'Options';
+        if(method_exists($record, $methodName)){
+            $options = $record->$methodName();
+            if(array_key_exists($value, $options)){
+                return $options[$value];
+            }
+
+            return '';
+        }
+
+        throw new ApplicationException(Lang::get('backend::lang.list.options_method_not_exists', [
+            'model'  => get_class($record),
+            'method' => $methodName,
+            'field'  => $column->columnName
+        ]));
+
+    }
+
+    /**
+     * Process as boolean switch
+     */
     protected function evalSwitchTypeValue($record, $column, $value)
     {
         $contents = '';
